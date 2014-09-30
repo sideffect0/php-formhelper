@@ -243,11 +243,11 @@ class CountryCodeHelper{
 			);
 		}	
 	}
-	public static function findAllCountryData(){
+	public static function find_all_country_data(){
 		CountryCodeHelper::initCountryData();
 		return CountryCodeHelper::$country_data;
 	}
-	public static function findAllCountryCodes(){
+	public static function find_all_country_codes(){
 		CountryCodeHelper::initCountryData();
 		if(CountryCodeHelper::$country_codes == NULL){
 			CountryCodeHelper::$country_codes = array();
@@ -260,7 +260,7 @@ class CountryCodeHelper{
 		return CountryCodeHelper::$country_codes;
 	}
 	
-	public static function findAllCountryNames(){
+	public static function find_all_country_names(){
 		CountryCodeHelper::initCountryData();
 		if(CountryCodeHelper::$country_names == NULL){
 			CountryCodeHelper::$country_names = array();
@@ -273,7 +273,7 @@ class CountryCodeHelper{
 		return CountryCodeHelper::$country_names;
 	}
 
-	public static function findAllCountryDialCodes(){
+	public static function find_all_country_dial_codes(){
 		CountryCodeHelper::initCountryData();
 		if(CountryCodeHelper::$country_dial_codes == NULL){
 			CountryCodeHelper::$country_dial_codes = array();
@@ -284,5 +284,15 @@ class CountryCodeHelper{
 			} 
 		}
 		return CountryCodeHelper::$country_dial_codes;		
+	}
+
+	public static function dump_as_input_select($name){
+		CountryCodeHelper::initCountryData();
+		$input_select = "<select name='".$name."'>";
+		foreach(CountryCodeHelper::$country_data as $country_datom){
+			$input_select.="<option value='".$country_datom['d_code']."'>".$country_datom['name']."</option>";
+		}
+		$input_select.="</select>";
+		return $input_select;
 	}
 }
