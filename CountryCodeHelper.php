@@ -286,7 +286,7 @@ class CountryCodeHelper{
 		return CountryCodeHelper::$country_dial_codes;		
 	}
 
-	public static function dump_as_input_select($name){
+	public static function as_input_select($name){
 		CountryCodeHelper::initCountryData();
 		$input_select = "<select name='".$name."'>";
 		foreach(CountryCodeHelper::$country_data as $country_datom){
@@ -295,4 +295,9 @@ class CountryCodeHelper{
 		$input_select.="</select>";
 		return $input_select;
 	}
+
+        public static function as_json(){
+		CountryCodeHelper::initCountryData();
+                return json_encode(CountryCodeHelper::$country_data);
+        }
 }
